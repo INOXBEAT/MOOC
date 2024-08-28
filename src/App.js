@@ -24,8 +24,15 @@ function App() {
   };
 
   const handleDownload = () => {
-    // Lógica para generar y descargar el archivo
-    alert('Funcionalidad de descarga aún no implementada');
+    const content = `Transcripción:\n${transcript}\n\nPreguntas:\n${questions.join('\n')}`;
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'contenido_generado.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   return (
