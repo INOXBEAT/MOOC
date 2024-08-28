@@ -20,6 +20,7 @@ function App() {
     setTranscript(processedTranscript);
   };
 
+  //TRASCRIPCIÓN 
   const processTranscript = (text) => {
     return text
       .split('\n') // Divide el texto en líneas
