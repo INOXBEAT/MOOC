@@ -4,23 +4,26 @@ function InteractiveContent({ onAdd }) {
   const [question, setQuestion] = useState('');
 
   const handleAdd = () => {
-    if (question) {
-      onAdd(question);
-      setQuestion('');
-    }
+    onAdd(question);
+    setQuestion('');
   };
 
   return (
     <div>
-      <h2>Agregar Contenido Interactivo</h2>
+      <h2>Agregar Pregunta</h2>
       <input
         type="text"
-        placeholder="Ingresa una pregunta"
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
-        required
+        placeholder="Escribe tu pregunta aquí"
       />
       <button onClick={handleAdd}>Agregar Pregunta</button>
+      <div>
+        <h3>Preguntas Agregadas:</h3>
+        <ul>
+          {/* Mostrar las preguntas aquí */}
+        </ul>
+      </div>
     </div>
   );
 }
