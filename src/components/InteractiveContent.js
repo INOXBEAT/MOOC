@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 
-function InteractiveContent({ onAdd }) {
+function InteractiveContent({ questions, onAdd }) {
   const [question, setQuestion] = useState('');
 
-  const handleAdd = () => {
-    onAdd(question);
-    setQuestion('');
+  const handleAddClick = () => {
+    if (question.trim()) {
+      onAdd(question);
+      setQuestion('');
+    }
   };
 
   return (
@@ -17,13 +19,13 @@ function InteractiveContent({ onAdd }) {
         onChange={(e) => setQuestion(e.target.value)}
         placeholder="Escribe tu pregunta aquí"
       />
-      <button onClick={handleAdd}>Agregar Pregunta</button>
-      <div>
-        <h3>Preguntas Agregadas:</h3>
-        <ul>
-          {/* Mostrar las preguntas aquí */}
-        </ul>
-      </div>
+      <button onClick={handleAddClick}>Agregar Pregunta</button>
+      <h3>Preguntas Agregadas:</h3>
+      <ul>
+        {questions.map((q, index) => (
+          <li key={index}>{q}</li>
+        ))}
+      </ul>
     </div>
   );
 }

@@ -34,7 +34,7 @@ function App() {
       {transcript && (
         <>
           <TranscriptDisplay transcript={transcript} onEdit={handleEditTranscript} />
-          <InteractiveContent onAdd={handleAddQuestion} />
+          <InteractiveContent questions={questions} onAdd={handleAddQuestion} />
           <DownloadButton onClick={handleDownload} />
         </>
       )}

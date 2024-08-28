@@ -1,34 +1,40 @@
 import React, { useState } from 'react';
 
 function TranscriptDisplay({ transcript, onEdit }) {
-  const [editing, setEditing] = useState(false);
-  const [newTranscript, setNewTranscript] = useState(transcript);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedTranscript, setEditedTranscript] = useState(transcript);
 
-  const handleEdit = () => {
-    setEditing(true);
+  const handleEditClick = () => {
+    setIsEditing(true);
   };
 
-  const handleSave = () => {
-    onEdit(newTranscript);
-    setEditing(false);
+  const handleSaveClick = () => {
+    onEdit(editedTranscript);
+    setIsEditing(false);
+  };
+
+  const handleChange = (e) => {
+    setEditedTranscript(e.target.value);
   };
 
   return (
     <div>
       <h2>Transcripción</h2>
-      {editing ? (
-        <div>
+      {isEditing ? (
+        <>
           <textarea
-            value={newTranscript}
-            onChange={(e) => setNewTranscript(e.target.value)}
+            value={editedTranscript}
+            onChange={handleChange}
+            rows="10"
+            cols="50"
           />
-          <button onClick={handleSave}>Guardar</button>
-        </div>
+          <button onClick={handleSaveClick}>Guardar</button>
+        </>
       ) : (
-        <div>
+        <>
           <pre>{transcript}</pre>
-          <button onClick={handleEdit}>Editar Transcripción</button>
-        </div>
+          <button onClick={handleEditClick}>Editar Transcripción</button>
+        </>
       )}
     </div>
   );
