@@ -24,19 +24,15 @@ function App() {
   };
 
   const handleDownload = () => {
-    const content = `Transcripción:\n${transcript}\n\nPreguntas:\n${questions.join('\n')}`;
-    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'contenido_generado.txt';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    // Lógica para generar y descargar el archivo
+    alert('Funcionalidad de descarga aún no implementada');
   };
 
   return (
-    <div className="App">
+    <div className="App container mt-4">
+      <header className="mb-4">
+        <h1 className="text-center">Herramienta de Transcripción y Contenido Interactivo</h1>
+      </header>
       <YouTubeInput onSubmit={handleSubmitUrl} />
       {transcript && (
         <>
